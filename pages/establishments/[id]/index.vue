@@ -31,7 +31,7 @@ const status = computed(() =>
 function openPermit(): void {
     notAvailableInDemo(
         'Business permit',
-        `Opening the permit filed by ${establishment.value?.business_name} needs the document store, which this front-end demo does not carry. The uploaded documents are shown in the screenshots on the case study.`,
+        `Opening the permit filed by ${establishment.value?.business_name} needs the document store, which this front-end demo does not carry.`,
     )
 }
 

@@ -74,7 +74,7 @@ function isLapsed(row: SafetyOfficer): boolean {
 function openCertificate(row: SafetyOfficer): void {
     notAvailableInDemo(
         'Certificate / ID file',
-        `Opening the certificate on file for ${officers.displayName(row)} needs the document store, which this front-end demo does not carry. The uploaded certificates are shown in the screenshots on the case study.`,
+        `Opening the certificate on file for ${officers.displayName(row)} needs the document store, which this front-end demo does not carry.`,
     )
 }
 
