@@ -67,6 +67,17 @@ function isLapsed(row: SafetyOfficer): boolean {
     return row.valid_until !== '' && isPast(row.valid_until)
 }
 
+/**
+ * The record carries a certificate URL, but there is no document store behind
+ * it — so the button explains that rather than opening a dead link.
+ */
+function openCertificate(row: SafetyOfficer): void {
+    notAvailableInDemo(
+        'Certificate / ID file',
+        `Opening the certificate on file for ${officers.displayName(row)} needs the document store, which this front-end demo does not carry. The uploaded certificates are shown in the screenshots on the case study.`,
+    )
+}
+
 async function confirmRemove(row: SafetyOfficer): Promise<void> {
     const { confirmed } = await modal.confirm({
         title: 'Remove from the register?',
@@ -182,16 +193,15 @@ async function confirmRemove(row: SafetyOfficer): Promise<void> {
 
                 <template #cell-actions="{ row }">
                     <div class="table__actions">
-                        <a
+                        <button
                             v-if="row.cert_file"
-                            :href="row.cert_file"
+                            type="button"
                             class="btn btn--secondary btn--icon"
-                            target="_blank"
-                            rel="noopener"
                             title="Open the certificate"
+                            @click="openCertificate(row)"
                         >
                             <AppIcon name="file-text" :size="14" />
-                        </a>
+                        </button>
 
                         <NuxtLink
                             v-if="auth.canRegisterPersonnel"

@@ -1307,6 +1307,22 @@ a.stat:hover {
     width: 100%;
 }
 
+/* A control that reads as a link. For an action that looks like following a
+   link but is not one — opening a document the demo has to explain away. */
+.link-button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--brand-700);
+    cursor: pointer;
+}
+
+.link-button:hover {
+    color: var(--brand-800);
+    text-decoration: underline;
+}
+
 /* ── Badges ─────────────────────────────────────────────────────────────── */
 
 .badge {

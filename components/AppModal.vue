@@ -67,6 +67,19 @@ onBeforeUnmount(() => {
                     <div class="modal__body">
                         <p v-if="modal.state.text">{{ modal.state.text }}</p>
 
+                        <!-- Where a notice can point somewhere: the case study,
+                             for the parts a front end cannot stand in for. -->
+                        <p v-if="modal.state.link" class="text-center mt-3 mb-0">
+                            <a
+                                :href="modal.state.link.href"
+                                target="_blank"
+                                rel="noopener"
+                                class="font-semibold"
+                            >
+                                {{ modal.state.link.label }}
+                            </a>
+                        </p>
+
                         <div v-if="modal.state.promptShown" class="field mt-3">
                             <label class="label" for="app-modal-prompt">
                                 {{ modal.state.promptLabel }}

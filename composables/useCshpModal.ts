@@ -34,11 +34,18 @@ export interface ConfirmOptions {
     }
 }
 
+/** A link offered under the message, for a notice that can point somewhere. */
+export interface ModalLink {
+    href: string
+    label: string
+}
+
 export interface NoticeOptions {
     title: string
     text?: string
     dismissText?: string
     variant?: ModalVariant
+    link?: ModalLink
 }
 
 interface ModalState {
@@ -55,6 +62,7 @@ interface ModalState {
     promptValue: string
     promptShown: boolean
     promptError: string
+    link: ModalLink | null
 }
 
 const state = reactive<ModalState>({
@@ -71,6 +79,7 @@ const state = reactive<ModalState>({
     promptValue: '',
     promptShown: false,
     promptError: '',
+    link: null,
 })
 
 /** The outcome a caller waits on: was it confirmed, and what was typed. */
@@ -90,6 +99,7 @@ function settle(confirmed: boolean): void {
     state.kind = null
     state.promptShown = false
     state.promptError = ''
+    state.link = null
 
     resolve?.({ confirmed, text })
 }
@@ -112,6 +122,7 @@ export function useCshpModal() {
             state.confirmText = options.confirmText ?? 'Confirm'
             state.cancelText = options.cancelText ?? 'Cancel'
             state.variant = options.variant ?? 'primary'
+            state.link = null
             state.promptShown = Boolean(options.prompt)
             state.promptLabel = options.prompt?.label ?? ''
             state.promptPlaceholder = options.prompt?.placeholder ?? ''
@@ -133,6 +144,7 @@ export function useCshpModal() {
             state.text = options.text ?? ''
             state.dismissText = options.dismissText ?? 'Close'
             state.variant = options.variant ?? 'primary'
+            state.link = options.link ?? null
             state.promptShown = false
 
             return new Promise<ModalResult>((resolve) => {

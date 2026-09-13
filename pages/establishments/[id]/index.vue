@@ -27,6 +27,14 @@ const status = computed(() =>
     estabStatuses.find((entry) => entry.id === establishment.value?.status),
 )
 
+/** Same dead link as the certificates on the register: nothing is behind it. */
+function openPermit(): void {
+    notAvailableInDemo(
+        'Business permit',
+        `Opening the permit filed by ${establishment.value?.business_name} needs the document store, which this front-end demo does not carry. The uploaded documents are shown in the screenshots on the case study.`,
+    )
+}
+
 async function confirmRegister(): Promise<void> {
     if (!establishment.value) {
         return
@@ -244,15 +252,15 @@ async function confirmRegister(): Promise<void> {
                                     <tr>
                                         <th scope="row">Business permit</th>
                                         <td>
-                                            <a
+                                            <button
                                                 v-if="establishment.permit_attachment"
-                                                :href="establishment.permit_attachment"
-                                                target="_blank"
-                                                rel="noopener"
+                                                type="button"
+                                                class="link-button"
+                                                @click="openPermit"
                                             >
                                                 Open the document
-                                            </a>
-                                            <span v-else>—</span>
+                                            </button>
+                                            <span v-else>&mdash;</span>
                                         </td>
                                     </tr>
                                 </tbody>
