@@ -30,6 +30,10 @@ export default defineNuxtConfig({
 
         head: {
             title: 'CSHP — Demo by LaurieJohn',
+            // Every tab carries the name of the piece rather than the screen
+            // you happen to be on. The pages still set their own titles; this
+            // template overrides them, so removing this line hands them back.
+            titleTemplate: 'CSHP — Demo by LaurieJohn',
             htmlAttrs: { lang: 'en' },
             meta: [
                 { charset: 'utf-8' },
