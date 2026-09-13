@@ -1637,6 +1637,13 @@ body.modal-open {
     font-size: 0.8125rem;
 }
 
+/* The footer line is muted, so bold alone barely registers at this size — the
+   emphasised parts step up a shade as well as a weight. */
+.app-footer__inner strong {
+    color: var(--slate-700);
+    font-weight: 650;
+}
+
 .app-footer__links {
     display: flex;
     flex-wrap: wrap;

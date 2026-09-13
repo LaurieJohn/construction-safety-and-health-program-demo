@@ -6,7 +6,8 @@ const year = new Date().getFullYear()
     <footer class="app-footer">
         <div class="container app-footer__inner">
             <p class="mb-0">
-                &copy; {{ year }} CSHP &mdash; Demo, made by LaurieJohn. Sample data only.
+                &copy; {{ year }} <strong>CSHP &mdash; Demo</strong>, made by
+                <strong>LaurieJohn</strong>. Sample data only.
             </p>
 
             <div class="app-footer__links">
